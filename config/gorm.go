@@ -29,7 +29,7 @@ func ConnectDB() (*gorm.DB, error) {
 	}
 
 	// don't forget to automigrate
-	db.Debug().AutoMigrate(models.Users{})
+	db.Debug().AutoMigrate(models.Users{}, models.Category{}, models.Tickets{})
 
 	return db, nil
 }

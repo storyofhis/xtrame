@@ -15,7 +15,7 @@ const (
 	M_INTERNAL_SERVER_ERROR         = "INTERNAL_SERVER_ERROR"
 	M_EMAIL_ALREADY_USED            = "EMAIL_ALREADY_USED"
 	M_USERNAME_ALREADY_USED         = "USERNAME_ALREADY_USED"
-	M_MOVIE_SUCCESSFULLY_DELETED    = "Moview has been successfully deleted"
+	M_TICKET_SUCCESSFULLY_DELETED   = "Ticket has been successfully deleted"
 	M_CATEGORY_SUCCESSFULLY_DELETED = "Category has been successfully deleted"
 	M_STOCK_IS_NOT_ENOUGH           = "STOCK_IS_NOT_ENOUGH"
 )

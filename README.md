@@ -1,4 +1,4 @@
-# Xtrame with Go (Golang) REST API
+# Xtrame Streame with Go (Golang) REST API 🚀
 make a point api for booking cinema ticket application
 
 Used libraries:
@@ -21,7 +21,7 @@ PORT=8080
 
 Setup Db after create database in your postgres
 ```
-CREATE TYPE role AS ENUM ('admin', 'user')
+CREATE TYPE role AS ENUM ('admin', 'user');
 ```
 
 Run 

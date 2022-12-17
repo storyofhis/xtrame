@@ -53,6 +53,7 @@ func (svc *userSvc) Register(ctx context.Context, user *params.Register) *views.
 	if err = svc.repos.CreateUser(ctx, &input); err != nil {
 		return views.ErrorResponse(http.StatusInternalServerError, views.M_INTERNAL_SERVER_ERROR, err)
 	}
+	// response
 	return views.SuccessResponse(http.StatusCreated, views.M_CREATED, views.Register{
 		Id:        input.Id,
 		FullName:  input.FullName,
