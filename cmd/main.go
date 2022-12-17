@@ -25,8 +25,6 @@ func main() {
 	db, err := config.ConnectDB()
 	if err != nil {
 		panic(err)
-		log.Println(err)
-		return
 	}
 
 	router := gin.Default()
@@ -37,7 +35,17 @@ func main() {
 	userSvc := services.NewUserSvc(userRepo)
 	userHandler := controllers.NewUserController(userSvc)
 
-	app := httpserver.NewRouter(router, userHandler)
+	// category
+	categoryRepo := gorm.NewCategoryRepo(db)
+	categorySvc := services.NewCategorySvc(categoryRepo, userRepo)
+	categoryHandler := controllers.NewCategoryController(categorySvc)
+
+	// ticket
+	ticketRepo := gorm.NewTicketRepo(db)
+	tickerSvc := services.NewTicketSvc(ticketRepo, userRepo, categoryRepo)
+	ticketHandler := controllers.NewTicketController(tickerSvc)
+
+	app := httpserver.NewRouter(router, userHandler, categoryHandler, ticketHandler)
 	PORT := os.Getenv("PORT")
 	app.Start(":" + PORT)
 }
