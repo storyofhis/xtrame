@@ -9,6 +9,7 @@ const (
 	Customer Role = "user"
 )
 
+// UPDATE users SET role = 'admin' WHERE id = 1;
 type Users struct {
 	Id        uint `gorm:"primaryKey;autoIncrement"`
 	FullName  string

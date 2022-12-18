@@ -23,7 +23,7 @@ func NewTicketController(svc services.TicketSvc) *TicketController {
 
 func (control *TicketController) CreateTicket(ctx *gin.Context) {
 	var req params.CreateTicket
-	err := ctx.ShouldBind(req)
+	err := ctx.ShouldBindJSON(&req)
 	if err != nil {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
 			"error": err.Error(),

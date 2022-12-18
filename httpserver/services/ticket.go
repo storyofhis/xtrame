@@ -41,7 +41,7 @@ func (svc *ticketSvc) CreateTicket(ctx context.Context, ticket *params.CreateTic
 		Price:       ticket.Price,
 		Seat:        ticket.Seat,
 		CategoryId:  ticket.CategoryId,
-		Duration:    ticket.Duration,
+		// Duration:    ticket.Duration,
 	}
 
 	err := svc.repos.CreateTicket(ctx, &model)
@@ -130,7 +130,7 @@ func (svc *ticketSvc) GetTickets(ctx context.Context) *views.Response {
 
 func (svc *ticketSvc) GetTicketById(ctx context.Context, id uint) *views.Response {
 	ticket, err := svc.repos.GetTicketById(ctx, id)
-	user, err := svc.userRepo.FindUserById(ctx, ticket.UserId)
+	// user, err := svc.userRepo.FindUserById(ctx, ticket.UserId)
 	category, err := svc.categoryRepo.GetCategoryById(ctx, ticket.CategoryId)
 	if err != nil {
 		if err == gorm.ErrRecordNotFound {
@@ -148,16 +148,16 @@ func (svc *ticketSvc) GetTicketById(ctx context.Context, id uint) *views.Respons
 		Seat:        ticket.Seat,
 		Duration:    ticket.Duration,
 		CategoryId:  category.Id,
-		UserId:      user.Id,
-		UserTickets: views.UserTickets{
-			Id:       user.Id,
-			FullName: user.FullName,
-			NickName: user.NickName,
-			UserName: user.UserName,
-			Email:    user.Email,
-			Age:      user.Age,
-			Role:     user.Role,
-		},
+		// UserId:      user.Id,
+		// UserTickets: views.UserTickets{
+		// 	Id:       user.Id,
+		// 	FullName: user.FullName,
+		// 	NickName: user.NickName,
+		// 	UserName: user.UserName,
+		// 	Email:    user.Email,
+		// 	Age:      user.Age,
+		// 	Role:     user.Role,
+		// },
 	})
 }
 

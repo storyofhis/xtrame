@@ -3,11 +3,11 @@ package models
 import "time"
 
 type Tickets struct {
-	Id          uint `gorm:"primaryKey;autoIncrement"`
-	UserId      uint
-	User        Users `gorm:"foreignKey:UserId"`
+	Id uint `gorm:"primaryKey;autoIncrement"`
+	// UserId      uint
+	// User        Users `gorm:"foreignKey:UserId"`
 	CategoryId  uint
-	Category    Category `gorm:"foreignKey:CategoryId"`
+	Category    Categories `gorm:"foreignKey:CategoryId"`
 	Title       string
 	Description string
 	Price       float32

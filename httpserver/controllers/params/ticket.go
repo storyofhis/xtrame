@@ -7,7 +7,7 @@ type CreateTicket struct {
 	Description string        `json:"description" validate:"required"`
 	Price       float32       `json:"price" validate:"required"`
 	Seat        int           `json:"seat" validate:"required"`
-	CategoryId  uint          `json:"category_id" validate:"reuquired"`
+	CategoryId  uint          `json:"category_id" validate:"required"`
 	Duration    time.Duration `json:"duration"`
 }
 
@@ -16,6 +16,6 @@ type UpdateTicket struct {
 	Description string        `json:"description"`
 	Price       float32       `json:"price" validate:"required"`
 	Seat        int           `json:"seat" validate:"required"`
-	CategoryId  uint          `json:"category_id" validate:"reuquired"`
+	CategoryId  uint          `json:"category_id" validate:"required"`
 	Duration    time.Duration `json:"duration"`
 }
