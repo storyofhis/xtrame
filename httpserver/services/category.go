@@ -23,7 +23,7 @@ func NewCategorySvc(repo repository.CategoryRepo, user repository.UserRepo) Cate
 }
 
 func (svc *categorySvc) CreateCategory(ctx context.Context, category *params.CreateCategory) *views.Response {
-	model := models.Category{
+	model := models.Categories{
 		Type: category.Type,
 	}
 	if err := svc.repo.CreateCategory(ctx, &model); err != nil {
@@ -31,15 +31,15 @@ func (svc *categorySvc) CreateCategory(ctx context.Context, category *params.Cre
 	}
 
 	return views.SuccessResponse(http.StatusCreated, views.M_CREATED, views.CreateCategory{
-		Id:        model.Id,
-		UserId:    model.UserId,
+		Id: model.Id,
+		// UserId:    model.UserId,
 		Type:      model.Type,
 		CreatedAt: model.CreatedAt,
 	})
 }
 
 func (svc *categorySvc) UpdateCategory(ctx context.Context, category *params.UpdateCategory, id uint) *views.Response {
-	model := models.Category{
+	model := models.Categories{
 		Type: category.Type,
 	}
 	// err := svc.repo.UpdateCategory(ctx, &model, model.Id)
@@ -48,8 +48,8 @@ func (svc *categorySvc) UpdateCategory(ctx context.Context, category *params.Upd
 		return views.ErrorResponse(http.StatusInternalServerError, views.M_INTERNAL_SERVER_ERROR, err)
 	}
 	return views.SuccessResponse(http.StatusOK, views.M_OK, views.UpdateCategory{
-		Id:        model.Id,
-		UserId:    model.UserId,
+		Id: model.Id,
+		// UserId:    model.UserId,
 		Type:      model.Type,
 		UpdatedAt: model.UpdatedAt,
 	})

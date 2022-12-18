@@ -21,9 +21,9 @@ type TicketRepo interface {
 }
 
 type CategoryRepo interface {
-	CreateCategory(ctx context.Context, category *models.Category) error
-	UpdateCategory(ctx context.Context, category *models.Category, id uint) error
-	GetCategories(ctx context.Context) ([]models.Category, error)
-	GetCategoryById(ctx context.Context, id uint) (*models.Category, error)
+	CreateCategory(ctx context.Context, category *models.Categories) error
+	UpdateCategory(ctx context.Context, category *models.Categories, id uint) error
+	GetCategories(ctx context.Context) ([]models.Categories, error)
+	GetCategoryById(ctx context.Context, id uint) (*models.Categories, error)
 	DeleteCategory(ctx context.Context, id uint) error
 }

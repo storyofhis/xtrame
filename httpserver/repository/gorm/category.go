@@ -19,7 +19,7 @@ func NewCategoryRepo(db *gorm.DB) repository.CategoryRepo {
 	}
 }
 
-func (repo *categoryRepo) CreateCategory(ctx context.Context, category *models.Category) error {
+func (repo *categoryRepo) CreateCategory(ctx context.Context, category *models.Categories) error {
 	category.CreatedAt = time.Now()
 	if err := repo.db.WithContext(ctx).Create(category).Error; err != nil {
 		return err
@@ -27,7 +27,7 @@ func (repo *categoryRepo) CreateCategory(ctx context.Context, category *models.C
 	return nil
 }
 
-func (repo *categoryRepo) UpdateCategory(ctx context.Context, category *models.Category, id uint) error {
+func (repo *categoryRepo) UpdateCategory(ctx context.Context, category *models.Categories, id uint) error {
 	category.UpdatedAt = time.Now()
 	if err := repo.db.WithContext(ctx).Where("id = ?", id).Updates(category).Error; err != nil {
 		return err
@@ -35,16 +35,16 @@ func (repo *categoryRepo) UpdateCategory(ctx context.Context, category *models.C
 	return nil
 }
 
-func (repo *categoryRepo) GetCategories(ctx context.Context) ([]models.Category, error) {
-	var category []models.Category
+func (repo *categoryRepo) GetCategories(ctx context.Context) ([]models.Categories, error) {
+	var category []models.Categories
 	if err := repo.db.WithContext(ctx).Find(category).Error; err != nil {
 		return nil, err
 	}
 	return category, nil
 }
 
-func (repo *categoryRepo) GetCategoryById(ctx context.Context, id uint) (*models.Category, error) {
-	var category models.Category
+func (repo *categoryRepo) GetCategoryById(ctx context.Context, id uint) (*models.Categories, error) {
+	var category models.Categories
 	if err := repo.db.WithContext(ctx).Where("id = ?", id).Updates(category).Error; err != nil {
 		return nil, err
 	}
@@ -52,7 +52,7 @@ func (repo *categoryRepo) GetCategoryById(ctx context.Context, id uint) (*models
 }
 
 func (repo *categoryRepo) DeleteCategory(ctx context.Context, id uint) error {
-	var category models.Category
+	var category models.Categories
 	category.DeletedAt = time.Now()
 	if err := repo.db.WithContext(ctx).Where("id = ?", id).Delete(category).Error; err != nil {
 		return err
