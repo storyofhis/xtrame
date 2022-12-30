@@ -45,6 +45,15 @@ func main() {
 	tickerSvc := services.NewTicketSvc(ticketRepo, userRepo, categoryRepo)
 	ticketHandler := controllers.NewTicketController(tickerSvc)
 
+	// mail
+	// config.ConnectMail()
+	// to := []string{"azizi.maula@gmail.com", "maulaizzaazizi@gmail.com"}
+	// cc := []string{"maulaizzazizi@gmail.com"}
+	// subject := "Test Email"
+	// message := "Hello"
+	// email := services.NewEmailSvc(to, cc, subject, message)
+	// email.ConnectEmail()
+
 	app := httpserver.NewRouter(router, userHandler, categoryHandler, ticketHandler)
 	PORT := os.Getenv("PORT")
 	app.Start(":" + PORT)

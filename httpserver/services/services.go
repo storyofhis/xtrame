@@ -7,6 +7,10 @@ import (
 	"github.com/storyofhis/xtrame/httpserver/controllers/views"
 )
 
+type EmailSvc interface {
+	ConnectEmail() *views.Response
+}
+
 type UserSvc interface {
 	Register(ctx context.Context, user *params.Register) *views.Response
 	Login(ctx context.Context, user *params.Login) *views.Response
